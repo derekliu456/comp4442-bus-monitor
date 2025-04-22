@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <canvas id="delayChart"></canvas>
+  <script>
+    const ctx = document.getElementById('delayChart');
+    let chart = new Chart(ctx, {
+      type:'bar',
+      data:{labels:[],datasets:[{label:'Delays>5min',data:[]}]} });
+    async function update(){
+      let r = await fetch('/stream'); let d = await r.json();
+      chart.data.labels=d.map(x=>x.route);
+      chart.data.datasets[0].data=d.map(x=>x.delay5);
+      chart.update();
+    }
+    setInterval(update,30000); update();
+  </script>
+</body>
+</html>

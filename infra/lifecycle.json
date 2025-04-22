@@ -1,0 +1,16 @@
+{
+    "Rules": [
+      {
+        "ID": "raw",
+        "Prefix": "raw/",
+        "Status": "Enabled",
+        "Expiration": { "Days": 7 }
+      },
+      {
+        "ID": "agg",
+        "Prefix": "agg/",
+        "Status": "Enabled",
+        "Expiration": { "Days": 90 }
+      }
+    ]
+  }
